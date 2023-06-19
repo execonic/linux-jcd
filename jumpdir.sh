@@ -40,24 +40,34 @@ ParseOpts() {
 }
 
 ListAlias() {
-		cat $ALIAS_DB
+		tmp=1
+		cat $ALIAS_DB | while read line
+		do
+			if [ $tmp == 1 ]; then
+				echo -e "\e[32;40m$line\E[0m"
+				tmp=0
+			else
+				echo -e "\e[36;40m$line\E[0m"
+				tmp=1
+			fi
+		done
 }
 
 SaveAlias() {
 		path=$(SearchAlias $1)
 
 		if [ "$path" != "" ]; then
-				echo -e "The alias \e[32;40m$1\E[0m already exists, do you want to replace it? (y/n)"
-
+				echo -e "The alias \e[32;40m$1=$path\E[0m already exist. Do you want to replace it? (y/n)"
 				read continue
 				if [[ "$continue" != "y" ]]; then
-								exit 0
+					exit 0
 				fi
 
 				sed -i '/^'$1'=/d' $ALIAS_DB
 		fi
 
 		echo "$1=$2" >> ${ALIAS_DB}
+		sort ${ALIAS_DB} -o ${ALIAS_DB}
 }
 
 # return path
