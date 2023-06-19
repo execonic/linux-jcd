@@ -3,7 +3,7 @@ Quickly jump to a specific directory in the Linux shell.
 
 ## Usage
 1. Run `chmod +x jumpdir.sh` to give `jumpdir.sh` execute permisson.
-2. Append the contents of the `./bashrc` to the `.bashrc` in your home directory. And replce `path/to/jumpdir.sh` with the path where you put `jumpdir.sh`.
+2. Append the contents of the `./bashrc` to the `.bashrc` in your home directory. And replace `path/to/jumpdir.sh` with the path where you put `jumpdir.sh`.
 3. Run `source ~/.bashrc`.
 4. Run `./jumpdir.sh -h` to get the help info.
 5. Run `./jumpdir.sh -a` to add an alias for the specified directory.
@@ -32,4 +32,3 @@ test=/home/source
 source@debian:~/opensource/mine/linux-jcd$ jcd test
 source@debian:~$ 
 ```
-
