@@ -13,7 +13,8 @@ Before installing this tool, please refer to [this page](https://github.com/siyu
 	- Run **`./jumpdir.sh -a `***`<alias>`***`=`***`<path>`* to add an alias for the specified directory.
 	- Run **`./jumpdir.sh -l`** to list all aliases.
 	- Run **`./jumpdir.sh -t `***`<alias>`* to get the path related to an alias.
-5. Run **`jcd `***`<alias>`* to jump to the specified directory.
+5. Run **`jcd `** to list all aliases.
+6. Run **`jcd `***`<alias>`* to jump to the specified directory.
 
 ### Exampe
 
