@@ -2,7 +2,8 @@
 # Author: Siyuan Liu
 # E-mail: siyuanl96@gmail.com
 
-ALIAS_DB="$(cd $(dirname ${BASH_SOURCE[0]}); pwd)/.jumpdir.d"
+# ALIAS_DB="$(cd $(dirname ${BASH_SOURCE[0]}); pwd)/.jumpdir.d"
+ALIAS_DB="/home/`whoami`/.jumpdir.d/"
 ALIAS_CMDLIST="${ALIAS_DB}/cmdlist"
 ALIAS_COMP="${SHELL_CMD_COMP_DIR}/jcd.comp"
 
@@ -13,6 +14,7 @@ fi
 if [ ! -f $ALIAS_COMP ]; then
 	touch $ALIAS_COMP
 	echo "jcd" > $ALIAS_COMP
+	echo "	@" >> $ALIAS_COMP
 fi
 
 if [ ! -f "$ALIAS_CMDLIST" ]; then
@@ -20,13 +22,14 @@ if [ ! -f "$ALIAS_CMDLIST" ]; then
 fi
 
 Usage() {
-	echo -e "	-a  Add or modify a alias."
+	echo -e "	-a  Add or modify an alias."
+	echo -e "	-d  Delete an alias."
 	echo -e "	-t  Echo target directory."
 	echo -e "	-l  List all aliases."
 }
 
 ParseOpts() {
-	while getopts ":a:t:l" opt
+	while getopts ":a:d:t:l" opt
 	do
 		case $opt in
 		a)
@@ -35,6 +38,9 @@ ParseOpts() {
 			path=${arr[1]}
 
 			SaveAlias $alias $path
+		;;
+		d)
+			DelAlias $OPTARG
 		;;
 		t)
 			JumpTo $OPTARG
@@ -62,6 +68,11 @@ ListAlias() {
 			tmp=1
 		fi
 	done
+}
+
+DelAlias() {
+	sed -i '/^'$1'=/d' $ALIAS_CMDLIST
+	sed -i '/^\t'$1'$/d' $ALIAS_COMP
 }
 
 SaveAlias() {

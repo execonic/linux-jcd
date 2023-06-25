@@ -10,7 +10,8 @@ Before installing this tool, please refer to [this page](https://github.com/siyu
 3. Run **`source ~/.bashrc`**.
 4. Try the following commands.
 	- Run **`./jumpdir.sh -h`** to get the help info.
-	- Run **`./jumpdir.sh -a `***`<alias>`***`=`***`<path>`* to add an alias for the specified directory.
+	- Run **`./jumpdir.sh -a `***`<alias>=<path>`* to add an alias for the specified directory.
+	- Run **`./jumpdir.sh -d `***`<alias>`* to delete an alias.
 	- Run **`./jumpdir.sh -l`** to list all aliases.
 	- Run **`./jumpdir.sh -t `***`<alias>`* to get the path related to an alias.
 5. Run **`jcd `** to list all aliases.
